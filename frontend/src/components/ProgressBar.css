@@ -1,0 +1,35 @@
+/* frontend/src/components/ProgressBar.css */
+
+.progress-bar-container {
+  width: 100%;
+  margin-bottom: 25px; /* Espaço abaixo da barra */
+  padding: 0 10px; /* Pequeno padding lateral */
+  box-sizing: border-box;
+}
+
+.progress-bar-texto {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666; /* Cinza escuro */
+  margin-bottom: 8px;
+}
+
+.progress-bar-fundo {
+  width: 100%;
+  height: 12px; /* Altura da barra */
+  background-color: #e0e0e0; /* Cinza claro de fundo */
+  border-radius: 6px;
+  overflow: hidden; /* Garante que o preenchimento fique contido */
+}
+
+.progress-bar-preenchimento {
+  height: 100%;
+  background-color: #4CAF50; /* Verde (cor primária) */
+  border-radius: 6px;
+  transition: width 0.5s ease-out; /* Animação suave */
+  text-align: right; /* Para o texto (se adicionado) */
+  line-height: 12px; /* Centraliza verticalmente (se houver texto) */
+  color: white; /* Cor do texto (se adicionado) */
+  font-size: 0.7rem; /* Tamanho do texto (se adicionado) */
+}

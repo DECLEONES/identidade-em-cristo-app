@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://user:password@localhost:5432/mydb"
+}
+
+// Tabela principal com os dados do participante
+model User {
+  id               String       @id @default(uuid())
+  name             String
+  birthDate        DateTime?
+  gender           String?
+  photoUrl         String?      @db.Text // Usamos Text para URLs longas (base64 da foto)
+  totalScore       Int          @default(0)
+  journeyStartTime DateTime     @default(now())
+  journeyEndTime   DateTime?
+  createdAt        DateTime     @default(now())
+
+  // Um utilizador pode ter várias reflexões
+  reflections      Reflection[]
+}
+
+// Tabela para guardar CADA reflexão escrita
+model Reflection {
+  id               String   @id @default(uuid())
+  // O campo 'etapa' não é mais necessário para a reflexão final
+  wallet           Json     // <-- NOVO CAMPO: Guarda o JSON da carteira
+  reflectionText   String   @db.Text // <-- NOME MUDADO para refletir o código
+  createdAt        DateTime @default(now())
+
+  // --- A LIGAÇÃO ---
+  user             User     @relation(fields: [userId], references: [id])
+  userId           String
+}
+
+
+

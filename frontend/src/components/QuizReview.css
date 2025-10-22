@@ -1,0 +1,88 @@
+/* frontend/src/components/QuizReview.css */
+
+.quiz-review-container {
+  width: 100%;
+  animation: fadeIn 0.5s ease-out; /* Reutiliza a animação fadeIn */
+}
+
+.quiz-review-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #FF69B4; /* Cor rosa do protótipo */
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 400px; /* Altura máxima com scroll */
+  overflow-y: auto; /* Adiciona scroll vertical se necessário */
+  padding-right: 10px; /* Espaço para a barra de scroll */
+}
+
+.review-question-box {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-left: 5px solid #ccc;
+  text-align: left;
+}
+
+.review-question-text {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.review-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.review-option {
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  border: 1px solid #e0e0e0;
+  font-size: 1em;
+  color: #555;
+}
+
+.review-option.correct {
+  background-color: #c8e6c9; /* Verde claro de acerto */
+  border-color: #4CAF50;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+.review-citation {
+  font-size: 0.9em;
+  color: #777;
+  display: block;
+  margin-top: 15px;
+  font-style: italic;
+  text-align: right;
+}
+
+.botao-voltar-review {
+  display: block;
+  margin: 30px auto 0 auto;
+  background-color: #2196F3; /* Azul */
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+}
+
+.botao-voltar-review:hover {
+  background-color: #1976D2; /* Azul mais escuro */
+}

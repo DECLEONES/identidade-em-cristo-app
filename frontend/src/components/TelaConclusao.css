@@ -1,0 +1,146 @@
+/* frontend/src/components/TelaConclusao.css */
+/* VERSÃO FINAL 2 - Fundo Proporcional e Botões Destacados */
+
+.container-conclusao {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  padding: 0 20px 20px 20px; 
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-conclusao {
+  background-color: white; /* Fundo branco caso a imagem não cubra tudo */
+  padding: 40px; 
+  border-radius: 20px; 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+  text-align: center;
+  position: relative; 
+  z-index: 1; 
+  overflow: hidden; 
+
+  /* --- PADRONIZAÇÃO DE TAMANHO (Mantida) --- */
+  width: 100%;
+  max-width: 900px; 
+  min-height: 550px; 
+  box-sizing: border-box;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  /* ----------------------------- */
+
+  margin-top: 20px; 
+}
+
+/* Pseudo-elemento para a imagem de fundo */
+.card-conclusao::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+  background-image: url('https://i.postimg.cc/hPB5MMBh/redds.png'); 
+  
+  /* --- AJUSTE DE TAMANHO DA IMAGEM --- */
+  background-size: contain; /* << MUDANÇA: Mantém proporção, não corta */
+  /* ---------------------------------- */
+
+  background-position: center center; 
+  background-repeat: no-repeat;
+  /* opacity: 1; << Mantém sólido */
+  z-index: -1; 
+}
+
+/* Ajuste cores do texto (Mantido branco com sombra) */
+.card-conclusao h1, 
+.card-conclusao p, 
+.card-conclusao strong,
+.titulo-conclusao,
+.parabens-texto,
+.pontuacao-final,
+.subtexto {
+  color: #FFFFFF; 
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+  position: relative; 
+  z-index: 2;
+}
+.pontuacao-final strong {
+   color: #FFEB3B; /* Amarelo */
+   font-size: 1.1em;
+}
+.parabens-texto strong { /* Garante que nome do usuário fique branco */
+    color: inherit; 
+    font-weight: 700; 
+}
+
+
+/* Animação (Mantida) */
+@keyframes fadeInZoom {
+  from { transform: scale(0.9); opacity: 0; } /* Opacity adicionada de volta */
+  to { transform: scale(1); opacity: 1; }
+}
+.card-conclusao {
+    opacity: 0; /* Estado inicial para animação */
+    animation: fadeInZoom 0.6s ease-out forwards; 
+}
+
+
+/* Resto dos estilos */
+.emoji-festa {
+  font-size: 4rem; display: block; margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+  position: relative; z-index: 2;
+}
+.titulo-conclusao { font-size: 2.8rem; font-weight: 700; margin-bottom: 15px; }
+.parabens-texto { font-size: 1.2rem; line-height: 1.6; margin-bottom: 10px; }
+.subtexto { font-size: 1.1rem; margin-bottom: 30px; }
+
+.botoes-recompensa {
+  display: flex; flex-direction: column; gap: 15px;
+  width: 100%; max-width: 300px; margin-top: 20px;
+  position: relative; z-index: 2; 
+}
+
+/* --- BOTÕES DE RECOMPENSA (Cores e Sombra Ajustados) --- */
+.botao-recompensa {
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff; /* << MUDANÇA: Texto escuro para contraste */
+  background-color: #fc259b; /* << MUDANÇA: Amarelo/Âmbar */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* << SOMBRA ADICIONADA/AJUSTADA */
+}
+
+.botao-recompensa:hover {
+  background-color: #3fe63f; /* Amarelo mais escuro */
+  transform: translateY(-3px);
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3); /* Sombra maior */
+}
+/* ---------------------------------------------------- */
+
+.pontuacao-final { font-size: 1.4rem; font-weight: 600; margin-top: -10px; margin-bottom: 25px; }
+
+/* Botão Reiniciar (Mantido Vermelho com Sombra) */
+.botao-reiniciar {
+  padding: 15px; font-size: 1.1rem; font-weight: 600;
+  color: white;
+  background-color: #f44336; /* Red */
+  border: none; border-radius: 10px; cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* << SOMBRA ADICIONADA/AJUSTADA */
+}
+
+.botao-reiniciar:hover {
+  background-color: #d32f2f;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3); /* Sombra maior */
+}

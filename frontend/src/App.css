@@ -1,0 +1,148 @@
+/* frontend/src/App.css */
+/* VERSÃO FINAL - Fundo, Footer e Animações Corrigidas */
+
+/* Estilos Globais do App (Fundo da Página) */
+.app-container {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza tudo horizontalmente */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0 20px 20px 20px; /* Padding ajustado */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  color: #333;
+
+  background-image: url('https://i.postimg.cc/hPB5MMBh/redds.png'), 
+                    linear-gradient(to bottom, #FF69B4 0%, #FF69B4 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% 30%, 100% auto; 
+  background-position: top center, 0% 30%; 
+  background-attachment: fixed; 
+}
+
+/* Footer (Mantido) */
+.app-footer { 
+  width: 100%;
+  max-width: 900px; 
+  text-align: center;
+  padding: 15px;
+  color: #fff; 
+  font-size: 0.9em; 
+  background-color: rgba(0, 0, 0, 0.2); 
+  border-radius: 8px; 
+  margin-top: 30px; 
+  box-sizing: border-box;
+  z-index: 3; 
+}
+
+/* Botão de Som (Mantido) */
+.sound-toggle-button {
+  position: fixed; 
+  bottom: 70px; 
+  right: 20px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: white;
+  border: none;
+  border-radius: 20px; 
+  cursor: pointer;
+  z-index: 10; 
+  transition: background-color 0.3s ease;
+}
+.sound-toggle-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* --- CORREÇÃO DA ANIMAÇÃO --- */
+
+/* O grupo que contém as telas */
+.screen-transition-group {
+  position: relative; /* Crucial para conter a tela que está saindo */
+  width: 100%;
+  max-width: 900px; /* <<< Garante que o grupo tenha a largura máxima padrão */
+  display: flex; /* Garante que o conteúdo seja um item flex */
+  justify-content: center;
+  align-items: flex-start; /* Alinha no topo */
+  flex-grow: 1; /* Permite que o grupo ocupe o espaço vertical disponível */
+}
+
+/* O invólucro direto de cada tela */
+.transition-wrapper {
+  width: 100%; /* Ocupa toda a largura do grupo de transição */
+}
+
+
+/* --- Animação de Entrada --- */
+.screen-fade-enter {
+  opacity: 0;
+  transform: scale(0.98);
+}
+.screen-fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
+}
+
+/* --- Animação de Saída --- */
+.screen-fade-exit {
+  opacity: 1;
+  transform: scale(1);
+  /* Posicionamento absoluto para a tela que sai */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupa a largura do grupo de transição */
+}
+.screen-fade-exit-active {
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
+}
+
+/* Estilos Globais do App (Fundo da Página) */
+.app-container {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza tudo horizontalmente */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0 20px 20px 20px; /* Padding ajustado */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  color: #333;
+
+  background-image: url('https://i.postimg.cc/hPB5MMBh/redds.png'), 
+                    linear-gradient(to bottom, #FF69B4 0%, #FF69B4 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% 30%, 100% auto; 
+  background-position: top center, 0% 30%; 
+  background-attachment: fixed; 
+}
+
+/* --- ADICIONADO: Estilo do Botão de Música --- */
+.music-toggle-button {
+  position: fixed;
+  bottom: 115px; /* Posição acima do botão de som */
+  right: 20px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  background-color: rgba(33, 150, 243, 0.7); /* Azul para diferenciar */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+  min-width: 160px; /* Largura mínima para o texto */
+  text-align: center;
+}
+.music-toggle-button:hover {
+  background-color: rgba(33, 150, 243, 0.9);
+}

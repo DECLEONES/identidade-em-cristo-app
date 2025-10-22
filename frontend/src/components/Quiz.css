@@ -1,0 +1,241 @@
+/* frontend/src/components/Quiz.css */
+/* Visual 100% fiel ao ID_OFICIAL.html */
+
+:root {
+  --primary-color: #4CAF50; /* Green */
+  --secondary-color: #FFC107; /* Amber (Yellow) */
+  --accent-color: #2196F3; /* Blue */
+  --text-color: #333;
+  --light-bg: #e8f5e9; /* Light Green */
+  --border-radius: 12px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Container principal do componente Quiz */
+.quiz-container-fiel { /* Nova classe base */
+  width: 100%;
+  max-width: 900px; /* Largura do container original */
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif; /* Fonte base do body original */
+}
+
+/* Título do Quiz (H2) */
+.quiz-container-fiel h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #FF69B4; /* Cor rosa do original */
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.8em;
+}
+
+/* Caixa da pergunta (div.question-box) */
+.question-box-fiel { /* Nova classe */
+  margin-top: 30px;
+  padding: 25px;
+  background-color: var(--light-bg);
+  border-radius: var(--border-radius);
+  border-left: 6px solid var(--primary-color);
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  animation: fadeIn 0.8s ease-out; /* Animação original */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Texto da pergunta (p dentro de .question-box) */
+.question-box-fiel p.question-text-fiel { /* Nova classe */
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #2e7d32;
+}
+
+/* Opções de resposta (label) */
+.option-label-fiel { /* Nova classe */
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  cursor: pointer;
+  font-size: 1.05em;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #e0e0e0;
+}
+
+/* Efeito hover nas opções */
+.option-label-fiel:hover:not(.disabled) { /* Adicionado :not(.disabled) */
+  background-color: var(--secondary-color);
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Desabilitar clique após responder */
+.option-label-fiel.disabled {
+  pointer-events: none;
+  opacity: 0.7; /* Opcional: feedback visual de desabilitado */
+}
+
+/* Input radio */
+.option-label-fiel input[type="radio"] {
+  margin-right: 12px;
+  min-width: 18px;
+  min-height: 18px;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* Estilos de feedback CORRETO/INCORRETO */
+.option-label-fiel.correct-fiel { /* Nova classe */
+  background-color: #c8e6c9 !important; /* Verde do original */
+  border-color: var(--primary-color);
+  font-weight: bold;
+}
+.option-label-fiel.incorrect-fiel { /* Nova classe */
+  background-color: #ffcdd2 !important; /* Vermelho do original */
+  border-color: #f44336;
+  font-weight: bold;
+}
+
+/* Estilo para a opção SELECIONADA (antes de responder) */
+.option-label-fiel.selected-fiel {
+  background-color: #bbdefb !important; /* Azul claro (ou outra cor neutra) */
+  border-color: var(--accent-color); /* Azul */
+  /* Remove o font-weight bold para não parecer final */
+}
+
+/* (O resto do CSS continua igual...) */
+/* Citação/Referência */
+.citation-fiel { /* Nova classe */
+  font-size: 0.9em;
+  color: #777;
+  display: block;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+/* Contêiner da Pontuação */
+.score-container-fiel { /* Nova classe */
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0 20px;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Botões de Navegação */
+.quiz-navigation-fiel { /* Nova classe */
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+.quiz-navigation-fiel button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 30px; /* Aumentado do original */
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1.15em; /* Do original */
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 150, 0, 0.2); /* Do original */
+}
+.quiz-navigation-fiel button:hover {
+  background-color: #388E3C; /* Verde mais escuro */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 150, 0, 0.3);
+}
+.quiz-navigation-fiel button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+.hidden-fiel { /* Nova classe */
+  display: none !important;
+}
+
+/* Overlay e Mensagem de Celebração */
+.celebration-overlay-fiel { /* Nova classe */
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.celebration-overlay-fiel.visible {
+  opacity: 1;
+}
+
+.celebration-message-fiel { /* Nova classe */
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  font-size: 1.5em; /* Do original */
+  font-weight: 700;
+  text-align: center;
+  animation: popIn 0.5s ease-out forwards;
+  position: relative;
+  z-index: 1001;
+  max-width: 90vw;
+}
+.celebration-message-fiel.correct { color: #4CAF50; } /* Verde do original */
+.celebration-message-fiel.incorrect { color: #F44336; } /* Vermelho do original */
+
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Animação Shake */
+.shake-fiel { /* Nova classe */
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* Confetti */
+.confetti-fiel { /* Nova classe */
+  position: absolute; /* Mudado para absolute para ficar dentro do overlay */
+  width: 10px;
+  height: 10px;
+  background-color: #f00; /* Será sobrescrito */
+  animation: fall linear forwards;
+  opacity: 0;
+  z-index: 1002; /* Acima da mensagem */
+  pointer-events: none;
+  top: 0; /* Começa no topo do overlay */
+}
+@keyframes fall {
+  0% { transform: translateY(0) rotateZ(0deg); opacity: 1; } /* Começa no topo do overlay */
+  100% { transform: translateY(100vh) rotateZ(720deg); opacity: 0; } /* Cai até o fim da tela */
+}
+
+/* Media Queries (simplificado para o contexto do Quiz) */
+@media (max-width: 768px) {
+  .quiz-container-fiel h2 { font-size: 1.5em; }
+  .question-box-fiel { padding: 15px; }
+  .question-box-fiel p.question-text-fiel { font-size: 1em; }
+  .option-label-fiel { font-size: 0.95em; padding: 8px 10px; }
+  .score-container-fiel { font-size: 1em; }
+  .celebration-message-fiel { font-size: 1.2em; padding: 20px 15px; }
+}

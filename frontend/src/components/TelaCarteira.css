@@ -1,0 +1,181 @@
+/* frontend/src/components/TelaCarteira.css */
+/* VISUAL ORIGINAL - Copiado do seu código */
+
+:root {
+  --doc-width: 102mm;
+  --doc-total-height: 135.8mm;
+  --doc-half-height: 67.9mm;
+}
+
+/* Container principal (body-carteira) - Ajustado para padrão 900px */
+.body-carteira {
+  width: 100%;
+  max-width: 900px; /* Largura padrão */
+  min-height: 550px; /* Altura mínima padrão */
+  box-sizing: border-box;
+  background-color: white; /* Fundo padrão */
+  border-radius: 20px; /* Borda padrão */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra padrão */
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Formulário (Seu original) */
+#form-container {
+  background: #fff; padding: 20px; border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2); margin-bottom: 20px;
+  width: 100%; /* Ajustado */
+  max-width: 500px; /* Limite */
+  display: flex; flex-direction: column; gap: 15px;
+  box-sizing: border-box; /* Adicionado */
+}
+.input-group { display: flex; flex-direction: column; gap: 5px; }
+.input-group label { font-weight: bold; color: #006400; font-size: 14px; }
+.input-group input, .input-group select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+.input-group .foto-buttons { display: flex; gap: 10px; }
+.input-group button { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; background-color: #FF3399; text-align: center; color: white; }
+.input-group button:hover { background-color: #e0e0e0; }
+.input-group input[type="file"] { display: none; }
+
+#btn-gerar {
+  background: #006400; color: #fff; padding: 10px 14px; border: none;
+  border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 10px;
+}
+#btn-gerar:disabled { background: #ccc; cursor: not-allowed; }
+
+/* Container do Card (Seu original, centraliza a carteira) */
+#card-container {
+  width: var(--doc-width); /* Tamanho exato */
+  height: var(--doc-total-height); /* Tamanho exato */
+  margin-left: auto; margin-right: auto; margin-bottom: 20px;
+  position: relative; /* Para posicionar o .documento */
+}
+
+/* Estilos da Carteira (Seu original) */
+.documento {
+  width: var(--doc-width); height: var(--doc-total-height);
+  border: 1px solid #ccc; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  position: relative;
+  background: url('https://i.postimg.cc/DwmLFBpy/background-identidade.png') no-repeat center/cover;
+  margin: 0; /* Remove margem */
+  overflow: hidden; /* Adicionado */
+}
+
+/* --- MANTENHA TODOS OS SEUS ESTILOS INTERNOS DA CARTEIRA AQUI --- */
+.frente, .verso { width: 100%; height: var(--doc-half-height); position: absolute; left: 0; }
+.frente { top: 0; padding: 3mm; border-bottom: 1px dashed #aaa; }
+.frente .logo-governo { position: absolute; top: -2mm; right: 0mm; width: 20mm; height: 20mm; background: url('https://i.postimg.cc/zXKqyBwP/logo-igreja.png') no-repeat center/contain; }
+.frente header { text-align: center; line-height: 1.2; color: #006400; }
+.frente header h1 { font-family: 'Oswald', sans-serif; font-size: 4.5mm; font-weight: 700; text-transform: uppercase; }
+.frente .subtitulo-governo { font-family: 'Montserrat', sans-serif; font-size: 2.4mm; font-weight: bold; text-transform: uppercase; }
+.frente .subtitulo-secretaria { font-family: 'Montserrat', sans-serif; font-size: 2.2mm; color: black; margin-top: 2mm; line-height: 0.8; }
+.frente header h2 { font-family: 'Oswald', sans-serif; font-size: 4mm; font-weight: bold; color: #222; margin-top: 0mm; }
+.frente header h3 { font-family: 'Montserrat', sans-serif; font-size: 2.2mm; color: #006400; margin-top: 0.5mm; }
+.frente .foto { position: absolute; top: 26mm; left: 4mm; width: 24mm; height: 32mm; border-radius: 3mm; background-color: #fff; background-position: center; background-size: cover; background-repeat: no-repeat; }
+.frente .conteudo { position: absolute; top: 28mm; left: 32mm; right: 3mm; }
+.frente .linha { display: flex; justify-content: space-between; margin-bottom: 0.8mm; }
+.frente .campo { width: 48%; }
+.frente .campo .label { font-size: 2mm; font-weight: bold; color: #006400; }
+.frente .campo .valor { font-size: 2.4mm; padding-bottom: 0.5mm; white-space: nowrap; font-weight: bold;}
+.frente .assinatura { position: absolute; bottom: 1mm; left: 50%; transform: translateX(-50%); text-align: center; width: 45mm; }
+.frente .assinatura-linha { border-top: 1px solid #000; margin-bottom: 0.5mm; }
+.frente .assinatura-label { font-size: 2.2mm; color: #444; }
+
+.verso { top: var(--doc-half-height); padding: 3mm; position: relative; }
+.verso .conteudo-superior-verso { display: flex; align-items: flex-start; gap: 2mm; position: relative; top: 3mm; left: -7mm; }
+.verso .mapa-fundo { width: 34mm; height: 23mm; position: relative; top: 0mm; left: 2.7mm; background: url('https://i.postimg.cc/C5ySbZhq/ESTUDO-corte.png') no-repeat center center; background-size: contain; opacity: 0.9; }
+.verso .dados-expedicao { text-align: left; }
+.verso .campo-exp { margin-bottom: 1.5mm; }
+.verso .campo-exp .label { font-weight: bold; font-size: 2.4mm; }
+.verso .campo-exp .valor { font-size: 2.4mm; color: #006400; font-weight: bold; }
+.verso .assinatura-divina { margin-top: 2mm; text-align: center; color: #006400; }
+.verso .assinatura-divina-img { font-family: 'Brush Script MT', cursive; font-size: 6mm; color: black; }
+.verso .assinatura-divina-label { font-size: 2.2mm; border-top: 1px solid #006400; width: 40mm; display: block; margin: -2mm auto 0; }
+.verso .validade-container { display: flex; justify-content: center; align-items: center; gap: 1.5mm; margin-top: 4mm; }
+.verso .espaco-figura { width: 10mm; height: 10mm; border: 1px solid #ccc; }
+.verso .validade { font-size: 1.6mm; text-align: center; margin-top: -8mm; color: #006400; }
+.verso .versiculo { font-style: italic; font-size: 2.5mm; color: #333; margin-bottom: -1mm; }
+.verso .rodape-verso { position: absolute; bottom: 3mm; left: 3mm; right: 3mm; text-align: center; }
+.verso .rodape-container { display: flex; justify-content: space-between; align-items: center; }
+.verso .rodape-texto-esquerda, .verso .rodape-texto-direita { font-size: 2mm; font-weight: bold; width: 42%; margin-bottom: -8mm; }
+.verso .logo-rodape { width: 30%; height: 12mm; background: url('https://i.postimg.cc/zXKqyBwP/logo-igreja.png') no-repeat center/contain; margin-bottom: -3mm; }
+#figura1 { background: url('https://i.postimg.cc/bwycQMMy/JESUS_3.png') no-repeat center/contain; }
+#figura2 { background: url('https://i.postimg.cc/tCtGnyBv/JESUS_2.png') no-repeat center/contain; }
+#figura3 { background: url('https://i.postimg.cc/Hk6G3zDQ/JESUS.png') no-repeat center/contain; }
+#figura4 { background: url('https://i.postimg.cc/DyzPLP6V/jesus_4.png') no-repeat center/contain; }
+/* ----------------------------------------------------------------- */
+
+/* Toolbar (Seu original) */
+.toolbar { /* <- Garanta que a classe é 'toolbar' */
+  margin-top: 20px; display: flex; gap: 8px; justify-content: center;
+}
+.toolbar button {
+  border: none; padding: 10px 14px; border-radius: 6px; cursor: pointer;
+  background: #006400; color: #fff; font-size: 14px;
+}
+.toolbar button:hover { background: #004d00; } /* Adicionado hover */
+
+/* --- ADICIONE ESTE BLOCO @media print NO FINAL --- */
+@media print {
+  /* 1. Define o tamanho da página de impressão */
+  @page {
+    size: 102mm 135.8mm; /* Tamanho exato da carteira */
+    margin: 0; 
+  }
+
+  /* 2. Esconde TUDO por padrão */
+  body * {
+    visibility: hidden;
+  }
+
+  /* 3. Torna VISÍVEL APENAS o documento da carteira e seu conteúdo */
+  .documento, .documento * {
+    visibility: visible;
+  }
+   /* Garante display flex interno, se necessário (pode não precisar mais) */
+   /* .documento .frente, .documento .verso, ... { display: flex !important; } */
+
+  /* 4. Posiciona o documento para impressão */
+  .documento {
+    /* Usa position:absolute para sobrepor qualquer resquício */
+    position: absolute !important; 
+    left: 0 !important;
+    top: 0 !important;
+    width: 102mm !important; /* Força tamanho exato */
+    height: 135.8mm !important; /* Força tamanho exato */
+    margin: 0 !important; 
+    padding: 0 !important;
+    border: none !important; 
+    box-shadow: none !important; 
+    overflow: hidden !important; 
+    page-break-inside: avoid !important; 
+  }
+
+  /* 5. Garante que pais fiquem "invisíveis" mas não afetem o layout */
+   body, html, #root, .app-container, .body-carteira, #card-container {
+      background: none !important; padding: 0 !important; margin: 0 !important;
+      border: none !important; box-shadow: none !important;
+      width: 100% !important; /* Ocupa a viewport de impressão */
+      height: 100% !important;
+      overflow: hidden !important; /* Esconde overflow */
+      position: static !important; /* Não interfere no absolute do .documento */
+   }
+   
+  /* 6. Força a impressão de cores e fundos (Mantido) */
+  .documento, .documento * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  /* (Cores forçadas específicas mantidas) */
+  .frente header h1, .frente .subtitulo-governo, .frente .campo .label { color: #006400 !important; }
+  /* ... etc ... */
+
+  /* 7. Esconde formulário/botões (Mantido) */
+  #form-container, .toolbar, .no-print { 
+      display: none !important;
+      visibility: hidden !important; /* Segurança extra */
+  }
+}

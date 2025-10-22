@@ -1,0 +1,150 @@
+/* frontend/src/components/TelaInicial.css */
+/* Fiel ao #welcomeScreen do ID_OFICIAL.html */
+
+.container-inicial-fiel { /* Nova classe base */
+  width: 100%;
+  max-width: 900px; /* Largura do container original */
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 40px; /* Padding do .container original */
+  background-color: #ffffff; /* Fundo branco do card */
+  border-radius: 12px; /* --border-radius */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* --shadow */
+  min-height: 550px; /* Altura mínima original */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center;
+}
+
+.welcome-image-fiel { /* Nova classe */
+  max-width: 20%; /* Do original */
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 12px; /* --border-radius */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.container-inicial-fiel h1 {
+  font-family: 'Montserrat', sans-serif;
+  color: #FF69B4; /* Cor rosa do original */
+  margin-bottom: 25px;
+  font-size: 2.5em; /* Do original */
+}
+
+.container-inicial-fiel p.subtitle { /* Nova classe */
+  color: #333; /* --text-color */
+  font-weight: bold;
+  font-size: 1.1em; /* Do original */
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.container-inicial-fiel input[type="text"] {
+  padding: 14px 20px;
+  margin: 25px 0;
+  border: 2px solid #4CAF50; /* --primary-color */
+  border-radius: 12px; /* --border-radius */
+  width: calc(100% - 44px); /* Ajusta padding e borda */
+  max-width: 350px;
+  font-size: 1.15em;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+  background-color: #f9fdf9;
+}
+.container-inicial-fiel input[type="text"]:focus {
+  border-color: #2196F3; /* --accent-color */
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.2);
+  outline: none;
+  background-color: #ffffff;
+}
+
+.container-inicial-fiel button {
+  background-color: #4CAF50; /* --primary-color */
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px; /* --border-radius */
+  cursor: pointer;
+  font-size: 1.15em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin: 10px;
+  box-shadow: 0 5px 15px rgba(0, 150, 0, 0.2);
+}
+.container-inicial-fiel button:hover:not(:disabled) { /* Evita hover no desabilitado */
+  background-color: #388E3C; /* Verde mais escuro */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 150, 0, 0.3);
+}
+.container-inicial-fiel button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.soundcloud-player-container-fiel { /* Nova classe */
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* Limita largura do player */
+}
+.soundcloud-player-container-fiel iframe {
+  border-radius: 8px; /* Adiciona borda arredondada */
+}
+
+.music-note { /* Nova classe */
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 15px;
+}
+
+/* frontend/src/components/TelaEtapa.css */
+/* ADICIONE NO FINAL - Estilos para o Diário de Reflexão */
+
+.diario-reflexao-container {
+  width: 100%;
+  margin-top: 30px; /* Espaço acima do diário */
+  margin-bottom: 30px; /* Espaço abaixo do diário, antes do botão */
+  padding: 20px;
+  background-color: #f9f9f9; /* Um fundo levemente diferente */
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+.diario-reflexao-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 15px;
+  text-align: left; /* Alinha o título à esquerda */
+}
+
+.diario-reflexao-textarea {
+  width: 100%;
+  padding: 15px;
+  font-family: 'Poppins', sans-serif; /* Mesma fonte do resto */
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical; /* Permite redimensionar apenas verticalmente */
+  box-sizing: border-box;
+  min-height: 100px; /* Altura mínima */
+}
+
+.diario-reflexao-textarea:focus {
+  outline: none;
+  border-color: #4CAF50; /* Destaca a borda ao focar */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Ajusta a margem do botão Concluir Etapa se necessário */
+.conteudo-etapa .botao-avancar {
+  margin-top: 0; /* Remove margem superior extra se o diário já deu espaço */
+}

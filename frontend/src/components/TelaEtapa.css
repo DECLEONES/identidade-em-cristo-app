@@ -1,0 +1,177 @@
+/* frontend/src/components/TelaEtapa.css */
+/* VERSÃO CORRIGIDA - Sem duplicação de .header-etapa */
+
+/* Regra para o título específico da fase (Vídeo/Reflexão) */
+.titulo-fase-etapa {
+  font-size: 1.8rem; 
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 25px; 
+  font-family: 'Montserrat', sans-serif; 
+}
+
+/* Ajuste ÚNICO do header para alinhar nome à direita */
+.header-etapa {
+  display: flex; /* Mantém flex */
+  justify-content: flex-end; /* Alinha SÓ o nome do usuário à direita */
+  color: #888;
+  font-weight: 600;
+  margin-bottom: 10px; /* Margem reduzida */
+  width: 100%; 
+}
+/* Opcional: Esconder o span "Etapa X de 6" se ainda estiver no JSX */
+/* .header-etapa span:first-child { display: none; } */
+
+
+/* Container geral da tela da etapa */
+.container-etapa {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start; 
+  min-height: 100vh;
+  padding: 0 20px; 
+  font-family: 'Poppins', sans-serif;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+/* O Card Principal da Etapa */
+.card-etapa {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 20px; 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+  width: 100%;           
+  max-width: 900px;      
+  min-height: 550px;     
+  box-sizing: border-box;
+  display: flex;          
+  flex-direction: column; 
+  opacity: 0;
+  animation: fadeInCard 0.5s ease-out forwards; 
+}
+
+@keyframes fadeInCard { 
+  to { opacity: 1; }
+}
+
+/* Título da Etapa (h1 original - pode ser removido do JSX se não usado) */
+.titulo-etapa {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+/* Container do conteúdo dinâmico */
+.conteudo-etapa {
+  margin-top: 20px;
+  width: 100%; 
+  flex-grow: 1; 
+  display: flex; 
+  flex-direction: column;
+  animation: fadeInContent 0.4s ease-in-out; 
+}
+
+@keyframes fadeInContent { 
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos para o VÍDEO */
+.video-wrapper { 
+  width: 100%; margin: 0 auto 20px auto; border-radius: 12px; 
+  overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
+.iframe-container {
+  position: relative; width: 100%; padding-top: 56.25%; height: 0; background-color: #000; 
+}
+.iframe-container iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; 
+}
+video { 
+  display: block; width: 100%; height: auto; border-radius: 12px; 
+}
+
+/* Estilos para a REFLEXÃO */
+.reflexao-container {
+  background-color: #f0f4c3; border-radius: 12px; padding: 30px; 
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); text-align: center;
+  border: 2px solid #aed581; margin-bottom: 20px; width: 100%; 
+  box-sizing: border-box;
+}
+/* h3 dentro da reflexão não é mais necessário se usar .titulo-fase-etapa */
+/* .reflexao-container h3 { ... } */
+.reflexao-container p {
+  font-size: 1.1em; line-height: 1.8; color: #555; margin-bottom: 20px;
+}
+.reflexao-container .citation { 
+  font-size: 1.2em; color: #2e7d32; font-weight: 600; margin-bottom: 5px; display: block;
+}
+.reflexao-container .reference { 
+   font-style: italic; font-size: 1em; color: #555; display: block; margin-bottom: 25px; 
+}
+
+/* Botão AVANÇAR/CONTINUAR */
+.botao-avancar { 
+  display: block; width: auto; min-width: 180px; margin: auto auto 0 auto; 
+  padding: 15px 30px; font-size: 1.15em; font-weight: 600; color: white;
+  background-color: #4CAF50; border: none; border-radius: 12px; cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 150, 0, 0.2); text-align: center;
+}
+
+.botao-avancar:hover {
+  background-color: #388E3C; transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 150, 0, 0.3);
+}
+
+/* ADICIONE NO FINAL de frontend/src/components/TelaEtapa.css */
+
+.quiz-resultado-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center;
+  flex-grow: 1; /* Ocupa o espaço disponível */
+}
+
+.resultado-pontuacao {
+  font-size: 1.4em;
+  color: #333;
+  margin: 20px 0;
+}
+
+.resultado-pontuacao strong {
+  font-size: 1.5em;
+  color: #4CAF50; /* Verde */
+}
+
+.resultado-botoes {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.botao-revisar {
+  background-color: #FFC107; /* Amarelo */
+  color: #333;
+  padding: 15px 30px; 
+  border: none;
+  border-radius: 12px; 
+  cursor: pointer;
+  font-size: 1.15em; 
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+.botao-revisar:hover {
+  background-color: #ffb300;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+}

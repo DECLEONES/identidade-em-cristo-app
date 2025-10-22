@@ -1,0 +1,123 @@
+/* frontend/src/components/TelaInstrucoes.css */
+
+.container-instrucoes-fiel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  width: 100%;
+  padding: 0 20px 20px 20px; 
+  box-sizing: border-box;
+}
+
+.card-instrucoes-fiel {
+  background-color: white; 
+  padding: 40px; 
+  border-radius: 20px; 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+  text-align: center;
+  position: relative; 
+  z-index: 1; 
+  overflow: hidden; 
+
+  /* --- PADRONIZAÇÃO DE TAMANHO --- */
+  width: 100%;
+  max-width: 900px; 
+  min-height: 550px; 
+  box-sizing: border-box;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  /* ----------------------------- */
+
+  margin-top: 20px; 
+}
+
+.emoji-instrucao {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.card-instrucoes-fiel h1 {
+  font-family: 'Montserrat', sans-serif;
+  color: #2196F3; /* Azul */
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.saudacao-instrucoes {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 25px;
+}
+.saudacao-instrucoes strong {
+  color: #333;
+  font-weight: 700;
+}
+
+.instrucoes-texto {
+  text-align: left; /* Alinha o texto das instruções à esquerda */
+  width: 100%;
+  max-width: 650px; /* Limita a largura do texto */
+  margin-bottom: 30px;
+  font-size: 1.05em;
+  line-height: 1.7;
+  color: #444;
+}
+
+.instrucoes-texto p {
+    margin-bottom: 15px;
+}
+
+.instrucoes-texto strong {
+  color: #006400; /* Verde escuro */
+}
+
+.instrucoes-texto ul {
+  list-style: none; /* Remove bolinhas padrão */
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.instrucoes-texto li {
+  margin-bottom: 10px;
+  padding-left: 25px; /* Espaço para o emoji */
+  position: relative;
+}
+
+.instrucoes-texto li::before {
+  content: attr(data-emoji); /* Pega o emoji do atributo */
+  position: absolute;
+  left: 0;
+  top: 1px; /* Ajuste vertical */
+  font-size: 1.1em;
+}
+
+/* Adiciona emojis específicos (pode personalizar) */
+.instrucoes-texto li:nth-child(1)::before { content: '🎬'; } /* Vídeo */
+.instrucoes-texto li:nth-child(2)::before { content: '❓'; } /* Quiz */
+.instrucoes-texto li:nth-child(3)::before { content: '✍️'; } /* Reflexão/Diário */
+.instrucoes-texto li:nth-child(4)::before { content: '🎁'; } /* Recompensas */
+
+
+.botao-iniciar-etapa1 {
+  background-color: #4CAF50; /* Verde Padrão */
+  color: white;
+  padding: 15px 30px; 
+  border: none;
+  border-radius: 12px; 
+  cursor: pointer;
+  font-size: 1.15em; 
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 150, 0, 0.2); 
+  text-align: center;
+  margin-top: 20px;
+}
+
+.botao-iniciar-etapa1:hover {
+  background-color: #388E3C; /* Verde mais escuro */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 150, 0, 0.3);
+}
