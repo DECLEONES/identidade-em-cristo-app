@@ -1,50 +1,54 @@
-# render.yaml - Render Blueprints
-# Define a infraestrutura do seu projeto: Banco de Dados e Serviço Web
+# render.yaml - Render Blueprints (Sintaxe Corrigida)
 
-# 1. Serviço de Banco de Dados PostgreSQL
+# Este blueprint define a infraestrutura do seu projeto:
+# 1. Um Banco de Dados PostgreSQL (pserv)
+# 2. Um Serviço Web (web) para a sua API Node/Express
+
 services:
+# 1. SERVIÇO DE BANCO DE DADOS (PSERV)
   - type: pserv
-    name: identidade-db
-    plan: free # Você pode mudar para 'starter' ou outro plano se precisar
-    databaseName: jornada_db
-    # Cria o volume de disco para dados persistentes (crucial para DBs)
+    name: identidade-db-service
+    plan: free # Plano de desenvolvimento
+    
+    # Configuração do Disco (Crucial para Dados Persistentes do DB)
     disk:
       name: jornada-db-disk
       sizeGB: 1
 
-# 2. Serviço Web (Backend Node.js/Express)
+# 2. SERVIÇO WEB (BACKEND NODE/EXPRESS)
   - type: web
-    name: identidade-api
-    rootDir: backend # O Render usará o código DENTRO da pasta 'backend'
+    name: identidade-api-service
+    rootDir: backend # O código a ser usado está DENTRO da pasta 'backend'
     plan: free
     env: node
-    port: 3000 
+    
+    # O Render deteta a porta 10000 por padrão, mas vamos forçar a injeção da porta
+    # no processo.env para garantir compatibilidade com o server.ts
     
     # Comandos de construção
-    # 1. Instala dependências do backend
-    # 2. Gera o cliente Prisma
-    # 3. Compila o TypeScript para JavaScript (dist/)
     buildCommand: |
       npm install
       npx prisma generate
       npm run build
       
-    # Comando de inicialização do servidor
+    # Comando de inicialização do servidor (usa o JS compilado na pasta dist/)
     startCommand: node dist/server.js
     
     # Variáveis de Ambiente
     envVars:
-      # CRUCIAL: O Render injeta automaticamente a URL do DB aqui.
+      # Variável que o Prisma usa para conectar à DB.
+      # O Render injeta automaticamente a string de conexão do serviço 'identidade-db-service'
       - key: DATABASE_URL
         fromDatabase:
-          name: identidade-db
+          name: identidade-db-service
           property: connectionString
-      # O URL do seu frontend para evitar erros de CORS. Será ajustado após o deploy do frontend.
+      # O URL do seu frontend para o CORS. Será ajustado após o deploy do frontend.
       - key: FRONTEND_URL
         value: "AGUARDANDO_URL_FRONTEND" 
+      # Configuração da porta (o Render pode injetar a sua, mas definimos um padrão)
       - key: PORT
         value: 3000
 
-    # Adiciona a pré-migração de banco de dados
+    # Adiciona a pré-migração de banco de dados (CRUCIAL)
     # Roda a migração ANTES de iniciar o servidor web pela primeira vez.
     preDeployCommand: npx prisma migrate deploy
