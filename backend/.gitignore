@@ -1,0 +1,12 @@
+# Ignorar arquivos de dependências
+/node_modules
+
+# Ignorar variáveis de ambiente (CRUCIAL!)
+.env
+
+# Ignorar arquivos gerados pelo Prisma
+/prisma/dev.db
+/prisma/migrations
+
+# Ignorar log do NPM
+npm-debug.log*
