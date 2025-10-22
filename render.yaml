@@ -1,0 +1,50 @@
+# render.yaml - Render Blueprints
+# Define a infraestrutura do seu projeto: Banco de Dados e Serviço Web
+
+# 1. Serviço de Banco de Dados PostgreSQL
+services:
+  - type: pserv
+    name: identidade-db
+    plan: free # Você pode mudar para 'starter' ou outro plano se precisar
+    databaseName: jornada_db
+    # Cria o volume de disco para dados persistentes (crucial para DBs)
+    disk:
+      name: jornada-db-disk
+      sizeGB: 1
+
+# 2. Serviço Web (Backend Node.js/Express)
+  - type: web
+    name: identidade-api
+    rootDir: backend # O Render usará o código DENTRO da pasta 'backend'
+    plan: free
+    env: node
+    port: 3000 
+    
+    # Comandos de construção
+    # 1. Instala dependências do backend
+    # 2. Gera o cliente Prisma
+    # 3. Compila o TypeScript para JavaScript (dist/)
+    buildCommand: |
+      npm install
+      npx prisma generate
+      npm run build
+      
+    # Comando de inicialização do servidor
+    startCommand: node dist/server.js
+    
+    # Variáveis de Ambiente
+    envVars:
+      # CRUCIAL: O Render injeta automaticamente a URL do DB aqui.
+      - key: DATABASE_URL
+        fromDatabase:
+          name: identidade-db
+          property: connectionString
+      # O URL do seu frontend para evitar erros de CORS. Será ajustado após o deploy do frontend.
+      - key: FRONTEND_URL
+        value: "AGUARDANDO_URL_FRONTEND" 
+      - key: PORT
+        value: 3000
+
+    # Adiciona a pré-migração de banco de dados
+    # Roda a migração ANTES de iniciar o servidor web pela primeira vez.
+    preDeployCommand: npx prisma migrate deploy
